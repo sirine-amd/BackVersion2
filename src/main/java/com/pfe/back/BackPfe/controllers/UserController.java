@@ -119,7 +119,7 @@ import
   
   @PutMapping("/updateUser/{id}")
   public User updateUser(@PathVariable(value="id") Long id,@RequestBody UserInfo U) {
-		System.out.println("ok");
+			System.out.println("ok");
 
 	  FileDB FileDB ;
 	  Long IDimage = U.getIdimage();
@@ -157,6 +157,26 @@ import
   public boolean verifPassword(@RequestBody ResponsePassword RP) { 
 	   return userService.verifPassword(RP.getId(),RP.getPassword());
   
+  }
+  
+  @PutMapping("/updateUserName/{id}")
+  public boolean updateUserNaeme(@PathVariable(value="id") Long id,@RequestBody UserInfo U) {
+	  return userService.updateUserNaeme(id, U.getUserName());
+  }
+  @PutMapping("/updateEmail/{id}")
+  public boolean updateEmail(@PathVariable(value="id") Long id,@RequestBody UserInfo U) {
+	  return userService.updateEmail(id, U.getEmail());
+  }
+  @PutMapping("/updatephoto/{id}")
+  public boolean updatephoto(@PathVariable(value="id") Long id,@RequestBody UserInfo U) {
+	  FileDB FileDB ;
+	  Long IDimage = U.getIdimage();
+			  if(IDimage==0)
+			  { FileDB=null;}
+			  else
+	   FileDB = storageService.getFile(U.getIdimage());
+	
+	  return userService.updateimage(id,FileDB);
   }
   }
  

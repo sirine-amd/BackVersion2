@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.pfe.back.BackPfe.entities.FileDB;
 import com.pfe.back.BackPfe.entities.User;
 import com.pfe.back.BackPfe.responses.UserInfo;
 
@@ -31,6 +32,13 @@ public interface UserService {
 	public List<User> getlisteCandidats();
 
 	public boolean verifPassword(Long id, String password);
+
+	public boolean updateUserNaeme(Long id, String userName);
+
+	public boolean updateimage(Long id, FileDB fileDB);
+
+	public boolean updateEmail(Long id, String email);
+
 
 
 

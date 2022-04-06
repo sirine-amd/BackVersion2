@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.pfe.back.BackPfe.entities.FileDB;
 import  com.pfe.back.BackPfe.entities.User;
 import  com.pfe.back.BackPfe.repository.UserDetailsRepository;
 import com.pfe.back.BackPfe.responses.UserInfo;
@@ -59,7 +60,6 @@ public class UserServiceImpl implements UserService{
 		user2.setAdresse(user.getAdresse());
 		user2.setAuthority(user.getAuthority());
 		user2.setNom(user.getNom());
-		user2.setPassword(passwordEncoder.encode(user.getPassword()));
 		user2.setPrenom(user.getPrenom());
 		user2.setEmail(user.getEmail());
 		user2.setGenre(user.getGenre());
@@ -152,4 +152,63 @@ public class UserServiceImpl implements UserService{
 		else return false;
 	}
 
+	public boolean updateUserNaeme(Long id, String userName) {
+		User user1=userRepo.findByUserName(userName);
+				if(user1!=null)
+				{
+					return false;
+
+				}
+				else
+				{
+					Optional<User> user2=userRepo.findById(id);
+					if(user2.isPresent())
+					{
+						User user3=user2.get();
+						user3.setUserName(userName);
+						 userRepo.save(user3);
+						 return true;
+
+				}
+					else return false;
+		
+	}}
+
+	@Override
+	public boolean updateEmail(Long id, String email) {
+		User user1=userRepo.findByEmail(email);
+		if(user1!=null)
+		{
+			return false;
+
+		}
+		else
+		{
+			Optional<User> user2=userRepo.findById(id);
+			if(user2.isPresent())
+			{
+				User user3=user2.get();
+				user3.setEmail(email);
+				 userRepo.save(user3);
+				 return true;
+
+		}
+			else return false;
+
+}}
+
+	@Override
+	public boolean updateimage(Long id,FileDB fileDB) {
+		
+		Optional<User> user=userRepo.findById(id);
+		if(user.isPresent())
+		{
+			
+			User user1=user.get();
+			user1.setImage(fileDB);
+			 userRepo.save(user1);
+			 return true;
+
+	}
+		else return false;	}
 }

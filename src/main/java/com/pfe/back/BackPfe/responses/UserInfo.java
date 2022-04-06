@@ -32,7 +32,7 @@ public class UserInfo {
 
 	
 
-	public UserInfo(long id, String nom, String prenom, String userName, Date date_de_naissance, String genre,
+	public UserInfo(long id, String nom, String prenom, String userName, Date date_de_naissance, String Genre,
 			String numero_de_telephone, String adressse, String etat_civil, String email, Object roles, String password,
 			Date createdAt, Long idimage, Date updatedAt, Date lastLogin) {
 		super();
@@ -41,7 +41,7 @@ public class UserInfo {
 		this.prenom = prenom;
 		this.userName = userName;
 		this.date_de_naissance = date_de_naissance;
-		Genre = genre;
+		this.Genre = Genre;
 		this.numero_de_telephone = numero_de_telephone;
 		this.adressse = adressse;
 		this.etat_civil = etat_civil;
@@ -130,14 +130,13 @@ public class UserInfo {
 		this.date_de_naissance = date_de_naissance;
 	}
 
+
 	public String getGenre() {
-		return Genre;
+		return this.Genre;
 	}
-
 	public void setGenre(String genre) {
-		Genre = genre;
+		this.Genre = genre;
 	}
-
 	public String getNumero_de_telephone() {
 		return numero_de_telephone;
 	}

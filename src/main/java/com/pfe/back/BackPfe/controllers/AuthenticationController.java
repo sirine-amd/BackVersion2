@@ -78,6 +78,11 @@ public class AuthenticationController {
 		userInfo.setUserName(userObj.getUsername());
 		userInfo.setPassword(userObj.getPassword());
 		userInfo.setId(userObj.getId());
+		System.out.println(userInfo.getGenre());
+		System.out.println(userObj.getGenre());
+		userInfo.setGenre(userObj.getGenre());
+		System.out.println(userInfo.getGenre());
+
 		if(userObj.getImage()==null)
 		{
 			userInfo.setIdimage((long) 0);
